@@ -1,5 +1,19 @@
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+import withApollo from '../lib/withApollo';
+
+const MY_QUERY = gql`
+  {
+    hello
+  }
+`;
+
 const Index = () => (
-  <div>Welcome to next-apollo-server</div>
+  <Query query={MY_QUERY}>
+    {({ data }) => (
+      <div>{ data.hello }</div>
+    )}
+  </Query>
 );
 
-export default Index;
+export default withApollo(Index);
