@@ -5,6 +5,7 @@ const createApolloServer = () => {
   const typeDefs = gql`
     type Query {
       hello: String
+      goodbye: String
     }
   `;
 
@@ -12,6 +13,7 @@ const createApolloServer = () => {
   const resolvers = {
     Query: {
       hello: () => 'Hello world!',
+      goodbye: () => 'Goodbye!',
     },
   };
   return new ApolloServer({ typeDefs, resolvers });

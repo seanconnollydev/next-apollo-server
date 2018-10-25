@@ -4,14 +4,14 @@ import withApollo from '../lib/withApollo';
 
 const MY_QUERY = gql`
   {
-    hello
+    goodbye
   }
 `;
 
 const Index = () => (
   <Query query={MY_QUERY}>
     {({ data }) => (
-      <div>{ data.hello }</div>
+      <div>{ data.goodbye }</div>
     )}
   </Query>
 );
