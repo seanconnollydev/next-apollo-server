@@ -1,5 +1,6 @@
 const express = require('express');
 const next = require('next');
+const createApolloServer = require('./graphql/createApolloServer');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -9,6 +10,9 @@ const handle = app.getRequestHandler();
 app.prepare()
   .then(() => {
     const server = express();
+    const apolloServer = createApolloServer();
+
+    apolloServer.applyMiddleware({ app: server });
 
     server.get('*', (req, res) => {
       handle(req, res);
